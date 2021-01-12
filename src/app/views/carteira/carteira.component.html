@@ -1,0 +1,18 @@
+<div class="card" *ngFor="let carteira of carteiraList">
+    <div class="card-header">
+        <h5 class="text-center text-muted">Descricao: {{ carteira.descricao }}</h5>
+      <h5 class="text-center text-muted">Composicao: {{ carteira.composicao }}</h5>
+    </div>
+    <div class="card-body" id="collapseManual" #collapse="bs-collapse" [collapse]="true">
+        <app-rentabilidade-list-view [carteira]="carteira">
+        </app-rentabilidade-list-view>
+    </div>
+    <div class="card-footer d-flex justify-content-center">
+        <input type="button" class="btn btn-primary"
+            (click)="collapse.toggle()"
+            aria-controls="collapseManual"
+           [value]="collapse.isCollapsed ? 'Mostrar Rentabilidades passadas' : 'Esconder Rentabilidades passadas'">
+    </div>
+</div>
+
+<ngx-ui-loader></ngx-ui-loader>
