@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="text-center text-primary">Carteira {{ carteira?.descricao }}</h4>
+        <h4 class="text-center text-primary">Composição {{ carteira?.composicao }}</h4>
+    </div>
+</div>
+<app-rentabilidade-list-view
+    [carteira]="carteira">
+</app-rentabilidade-list-view>

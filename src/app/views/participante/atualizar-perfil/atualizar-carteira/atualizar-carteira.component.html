@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-12">
+        <h5 class="text-center text-muted">De acordo com o questionário o perfil mais adequado para você é <strong>{{ perfil.descricao }}</strong></h5>
+        <h5 class="text-center text-muted">Verique abaixo as carteiras compatíveis com seu perfil e selecione uma</h5>
+        <app-carteira [carteiraList]="perfil.carteiras" [isUpdate]="true"
+        (carteiraSelectedEvent)="carteiraSelected($event)">
+        </app-carteira>
+    </div>
+</div>

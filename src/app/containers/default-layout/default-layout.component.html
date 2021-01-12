@@ -1,0 +1,34 @@
+<app-header [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/brand/ISPSystem_logo.jpg', width: 100, alt: 'ISPSystem Logo'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/ISPSystem_logo.jpg', width: 40, height: 40, alt: 'ISPSystem Logo'}"
+  [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+  <!-- <ul class="nav navbar-nav d-md-down-none">
+  </ul> -->
+  <ul class="nav navbar-nav ml-auto">
+  </ul>
+</app-header>
+<div class="app-body">
+  <app-sidebar [fixed]="true" [display]="'lg'">
+    <app-sidebar-nav [perfectScrollbar] [disabled]="sidebarMinimized" 
+    [navItems]="navItems" >
+    </app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+  <!-- Main content -->
+  <main class="main">
+    <!-- BreadCrumb -->
+    <ol class="breadcrumb">
+      <app-breadcrumb></app-breadcrumb>
+    </ol>
+    <!-- Container Fluid -->
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
+<app-footer>
+  <span>ISP System - Carteira Previdenciária &copy; 2021.</span>
+  <span class="ml-auto">Powered by: Maycon Klopper de Carvalho</span>
+</app-footer>
+
+<ngx-ui-loader></ngx-ui-loader>

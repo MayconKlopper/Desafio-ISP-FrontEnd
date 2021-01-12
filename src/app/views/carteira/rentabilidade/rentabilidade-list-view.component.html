@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-12">
+        <h5 class="text-center text-muted" *ngIf="carteira?.rentabilidades?.length == 0">Esta Carteira ainda não possui rentabilidades passadas</h5>
+        <div class="card" *ngFor="let chartItem of chartItemGroupedByYear">
+            <div class="card-header">
+              <h5 class="text-center text-muted">Ano: {{ chartItem.ano }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-wrapper">
+                  <canvas baseChart class="chart"
+                    [datasets]="[{
+                        barPercentage: 1.0,
+                        barThickness: 'flex',
+                        maxBarThickness: 8,
+                        minBarLength: 2,
+                        data: chartItem.percentList,
+                        label: 'Rentabilidade %'
+                    }]"
+                    [labels]="chartItem.monthList"
+                    [options]="{responsive: true}"
+                    [legend]="true"
+                    [chartType]="'horizontalBar'">
+                    </canvas>
+                </div>
+            </div>
+            <div class="card-footer">
+                <h5 class="text-center text-muted">Total: {{ chartItem.total }}</h5>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 # Desafio-ISP-FrontEnd
 ## Ferramentas utilizadas
-### Template COREUI Admin Template https://coreui.io/angular/demo/#/dashboard
+### Template COREUI Admin Template https://coreui.io/angular/
 ### chartjs
 ### lodash
 ### ngx-bootstrap
-### ngx-mask
-### ngx-toastr
+### ngx-mask https://github.com/JsDaddy/ngx-mask
+### ngx-toastr https://scttcper.github.io/ngx-toastr/
 ### ngx-ui-loader
 ## Possíveis Melhorias
 ### Implementar Modais reaproveitáveis para o sistema

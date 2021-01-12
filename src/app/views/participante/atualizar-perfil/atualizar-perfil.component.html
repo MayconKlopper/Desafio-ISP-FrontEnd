@@ -1,0 +1,44 @@
+<div class="row" *ngIf="!atualizarCarteira">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="text-center text-muted">Questionário</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="text-justified text-muted mb-3">Responda cada uma das perguntas com uma nota de 0 até 10, sendo 10 para concordo muito e 0 para não concordo nada.</h5>
+                <form class="form-row" [formGroup]="questionarioForm">
+                    <div class="col-12" formArrayName="questoes" *ngFor="let questaoFormControl of questoesFormArray.controls; let questaoformGroup=index">
+                      <div class="form-group col-12" [formGroupName]="questaoformGroup">
+                        <label for="name">Questão</label>
+                        <textarea class="form-control" formControlName="descricao"
+                            id="questao" name="questao" rows="2">
+                        </textarea>
+                      </div>
+                      <div class="form-group col-12 col-sm-8 col-md-4 col-lg-4 col-xl-3" [formGroupName]="questaoformGroup">
+                        <label for="pontuacao">Pontuação</label>
+                        <input type="number" class="form-control" formControlName="pontuacao"
+                            [ngClass]="{'is-invalid': (questaoFormControl?.invalid && (questaoFormControl?.dirty || questaoFormControl?.touched)), 'is-valid': (questaoFormControl?.valid && questaoFormControl?.touched)}"
+                            id="pontuacao" name="pontuacao"
+                            placeholder="digite uma pontuação">
+                            <div class="invalid-feedback" *ngIf="(questaoFormControl?.invalid && (questaoFormControl?.dirty || questaoFormControl?.touched))">
+                                <p *ngIf="questaoFormControl?.get('pontuacao')?.getError('required')">O preechimento deste campo é obrigatório</p>
+                                <p *ngIf="questaoFormControl?.get('pontuacao')?.getError('min')">O valor mínimo é 0</p>
+                                <p *ngIf="questaoFormControl?.get('pontuacao')?.getError('max')">O valor máximo é 10</p>
+                              </div>
+                      </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="questionarioForm.invalid" (click)="updateCarteira()"><i class="fa fa-dot-circle-o"></i> Enviar </button>
+                <button type="button" class="btn btn-warning" routerLink="/home"><i class="fa fa-ban"></i> Voltar </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-atualizar-carteira *ngIf="atualizarCarteira"
+    [perfil]="perfil"
+    (carteiraSelectedEvent)="createSolicitacao($event)">
+
+</app-atualizar-carteira>
