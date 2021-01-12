@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ParticipanteService } from '../../../services/participante.service';
+import { SolicitacaoModel, StatusEnum } from '../../Models';
 
 @Component({
     selector: 'app-solicitacao',
@@ -6,7 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SolicitacaoComponent implements OnInit {
-    constructor() { }
+    public solicitacaoList = new Array<SolicitacaoModel>();
+    public statusEnum = StatusEnum;
 
-    ngOnInit() { }
+    constructor(private participanteService: ParticipanteService,
+        private ngxUiLoaderService: NgxUiLoaderService) { }
+
+    ngOnInit() {
+        this.participanteService.getSolicitacao().subscribe(
+            (solicitacaoList) => {
+                this.solicitacaoList = solicitacaoList;
+                this.ngxUiLoaderService.stop();
+            },
+            (error) => {
+                this.ngxUiLoaderService.stop();
+            },
+            () => {
+                this.ngxUiLoaderService.stop();
+            }
+        );
+    }
 }

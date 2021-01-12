@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        <h5 class="text-center text-muted">Solicitações</h5>
+    </div>
+    <div class="card-body">
+        <h5 class="text-center text-muted" *ngIf="solicitacaoList?.length == 0">Você não possui Solicitações</h5>
+        <table class="table" *ngIf="solicitacaoList?.length > 0">
+            <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let solicitacao of solicitacaoList">
+                  <td>{{ solicitacao?.descricao }}</td>
+                  <td [ngSwitch]="solicitacao?.status">
+                    <span class="badge badge-success" *ngSwitchCase="statusEnum.concluida">Concluída</span>
+                    <span class="badge badge-warning" *ngSwitchCase="statusEnum.pendente">Pendente</span>
+                    <span class="badge badge-danger" *ngSwitchCase="statusEnum.rejeitada">Rejeitada</span>
+                    <span class="badge badge-info" *ngSwitchCase="statusEnum.aprovada">Aprovada</span>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

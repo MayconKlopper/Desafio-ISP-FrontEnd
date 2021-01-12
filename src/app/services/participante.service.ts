@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UtilsService } from '../utils.service';
-import { ParticipanteDetailedModel } from '../views/Models';
+import { CreateSolicitacaoModel, ParticipanteDetailedModel, PerfilDetailedModel, SolicitacaoModel } from '../views/Models';
 
 
 @Injectable({providedIn: 'root'})
@@ -21,5 +21,17 @@ export class ParticipanteService {
                 this.utilsService.setParticipante(participante);
             })
         );
+    }
+
+    public getSolicitacao(): Observable<SolicitacaoModel[]> {
+        return this.http.get<SolicitacaoModel[]>(this.API + '/getSolicitacao?participanteID=1');
+    }
+
+    public calculatePerfil(pontuation: number): Observable<PerfilDetailedModel> {
+        return this.http.post<PerfilDetailedModel>(this.API + '/calculatePerfil', pontuation);
+    }
+
+    public createSolicitacao(createSolicitacaoModel: CreateSolicitacaoModel): Observable<void> {
+        return this.http.post<void>(this.API + '/createSolicitacao', createSolicitacaoModel);
     }
 }

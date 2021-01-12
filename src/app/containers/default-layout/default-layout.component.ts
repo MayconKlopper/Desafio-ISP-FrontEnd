@@ -16,23 +16,6 @@ export class DefaultLayoutComponent implements OnDestroy {
   constructor(
     @Inject(DOCUMENT) _document?: any) {
 
-    //this.usuario = this.accountService.recuperausuarioLogado();
-
-    // switch (this.usuario.role[0]) {
-    //   case 'usuario': {
-    //      this.navItems = navUsuario;
-    //      break;
-    //   }
-    //   case 'empresa': {
-    //     this.navItems = navEmpresa;
-    //      break;
-    //   }
-    //   case 'funcionario': {
-    //     this.navItems = navFuncionario;
-    //      break;
-    //   }
-   //}
-
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = _document.body.classList.contains('sidebar-minimized');
     });
@@ -46,17 +29,4 @@ export class DefaultLayoutComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.changes.disconnect();
   }
-
-  // logOut() {
-  //   this.accountService.logOut().subscribe(
-  //     (resultSuccess) => {
-  //       this.toasterservice.success('Você foi deslogado do sistema.', 'Sucesso');
-  //     },
-  //     (resultError) => {},
-  //     () => {
-  //       localStorage.removeItem('usuarioLogado');
-  //       this.router.navigate(['./login']);
-  //     }
-  //   );
-  // }
 }
