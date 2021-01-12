@@ -19,12 +19,11 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.ngxUiLoaderService.start();
         if (this.participante.nome) {
-            this.ngxUiLoaderService.stop();
             return;
         }
 
+        this.ngxUiLoaderService.start();
         this.participanteService.get().subscribe(
             (participante) => {
                 this.participante = participante as ParticipanteDetailedModel;

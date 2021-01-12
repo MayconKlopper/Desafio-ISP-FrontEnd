@@ -9,11 +9,13 @@
         </app-rentabilidade-list-view>
     </div>
     <div class="card-footer d-flex justify-content-center">
-        <input type="button" class="btn btn-primary"
+        <input type="button" class="btn btn-primary mr-2"
             (click)="collapse.toggle()"
             aria-controls="collapseManual"
            [value]="collapse.isCollapsed ? 'Mostrar Rentabilidades passadas' : 'Esconder Rentabilidades passadas'">
+        <button type="button" class="btn btn-primary" *ngIf="isUpdate"
+            (click)="carteiraSelected(carteira)">
+            Selecionar Esta Carteira
+        </button>
     </div>
 </div>
-
-<ngx-ui-loader></ngx-ui-loader>

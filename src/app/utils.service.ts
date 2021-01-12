@@ -40,5 +40,11 @@ export class UtilsService {
 
         return carteira;
     }
+
+    getParticipanteID(): number {
+        const participante = this.getParticipante();
+
+        return participante.id;
+    }
     
 }

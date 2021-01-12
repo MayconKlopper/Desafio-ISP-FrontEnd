@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CarteiraService } from '../../services/carteira.service';
 import { CarteiraDetailedModel } from '../Models';
@@ -9,25 +9,33 @@ import { CarteiraDetailedModel } from '../Models';
 })
 
 export class CarteiraComponent implements OnInit {
-    public carteiraList = new Array<CarteiraDetailedModel>();
+    @Input() carteiraList = new Array<CarteiraDetailedModel>();
+    @Input() isUpdate = false;
+    @Output() carteiraSelectedEvent = new EventEmitter<CarteiraDetailedModel>();
     public isCollapsed = true;
 
     constructor(private carteiraService: CarteiraService,
         private ngxUiLoaderService: NgxUiLoaderService) { }
 
     ngOnInit() {
-        this.ngxUiLoaderService.start();
-        this.carteiraService.get().subscribe(
-            (carteiraList) => {
-                this.carteiraList = carteiraList;
-                this.ngxUiLoaderService.stop();
-            },
-            (error) => {
-                this.ngxUiLoaderService.stop();
-            },
-            () => {
-                this.ngxUiLoaderService.stop();
-            }
-        );
+        if (this.carteiraList.length == 0) {
+            this.ngxUiLoaderService.start();
+            this.carteiraService.get().subscribe(
+                (carteiraList) => {
+                    this.carteiraList = carteiraList;
+                },
+                (error) => {
+                    this.ngxUiLoaderService.stop();
+                },
+                () => {
+                    this.ngxUiLoaderService.stop();
+                }
+            );
+        }
+    }
+
+
+    carteiraSelected(carteira: CarteiraDetailedModel) {
+        this.carteiraSelectedEvent.emit(carteira);
     }
 }

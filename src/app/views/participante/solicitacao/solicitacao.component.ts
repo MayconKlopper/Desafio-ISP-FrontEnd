@@ -16,10 +16,10 @@ export class SolicitacaoComponent implements OnInit {
         private ngxUiLoaderService: NgxUiLoaderService) { }
 
     ngOnInit() {
+        this.ngxUiLoaderService.start();
         this.participanteService.getSolicitacao().subscribe(
             (solicitacaoList) => {
                 this.solicitacaoList = solicitacaoList;
-                this.ngxUiLoaderService.stop();
             },
             (error) => {
                 this.ngxUiLoaderService.stop();

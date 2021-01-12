@@ -55,6 +55,7 @@ import { CarteiraComponent } from './views/carteira/carteira.component';
 import { SolicitacaoComponent } from './views/participante/solicitacao/solicitacao.component';
 import { RentabilidadeComponent } from './views/carteira/rentabilidade/rentabilidade.component';
 import { RentabilidadeListViewComponent } from './views/carteira/rentabilidade/rentabilidade-list-view.component';
+import { AtualizarCarteiraComponent } from './views/participante/atualizar-perfil/atualizar-carteira/atualizar-carteira.component';
 
 
 
@@ -93,6 +94,7 @@ import { RentabilidadeListViewComponent } from './views/carteira/rentabilidade/r
     P500Component,
     HomeComponent,
     AtualizarPerfilComponent,
+    AtualizarCarteiraComponent,
     CarteiraComponent,
     SolicitacaoComponent,
     RentabilidadeComponent,

@@ -1,5 +1,5 @@
 export class ParticipanteDetailedModel {
-    public ID: number;
+    public id: number;
     public nome: string;
     public idade: number;
     public carteiraComposicao: string;
@@ -9,7 +9,7 @@ export class ParticipanteDetailedModel {
 }
 
 export class CarteiraDetailedModel {
-    public ID: number;
+    public id: number;
     public descricao: string;
     public composicao: string;
     public perfilAdequado: string;
@@ -23,17 +23,17 @@ export class RentabilidadeDetailedModel {
 }
 
 export class PerfilDetailedModel {
-    public ID: number;
+    public id: number;
     public descricao: string;
     public carteiras: CarteiraDetailedModel[];
 }
 
 export class CreateSolicitacaoModel {
     public newPerfil: string;
-    public newPerfilID: number;
+    public newPerfilId: number;
     public newCarteira: string;
-    public newCarteiraID: number;
-    public participanteID: number;
+    public newCarteiraId: number;
+    public participanteId: number;
 }
 
 export class SolicitacaoModel {
@@ -53,6 +53,11 @@ export class RentabilidadeChartItem {
         this.monthList = monthList || [];
         this.total = total || '';
     }
+}
+
+export class questaoModel {
+    descricao: string;
+    pontuacao: number;;
 }
 
 export enum StatusEnum {
